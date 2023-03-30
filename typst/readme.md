@@ -34,12 +34,15 @@ Write your text as normal here
 
 ### Optional arguments
 
-- **title**
+- #### **title**
+
   - default : none
   - type : string
   - examples:
     - title: "my title"
-- **authors**
+
+- #### **authors**
+
   - default : none
   - type : string or array of strings
   - examples:
@@ -76,16 +79,3 @@ Write your text as normal here
   - type : bool,
   - examples:
     - justifyContent: false
-asd
-asd
-asd
-asd
-asd
-asd
-asd
-asd
-asd
-asd
-asd
-asd
-asd
