@@ -1,4 +1,4 @@
-#import "template_vh.typ": conf
+#import "../template_vh.typ": conf
 
 #show: doc => conf(
     title: "Gradient descent of neural network is too long to fit on one line",
