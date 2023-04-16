@@ -5,6 +5,7 @@
     background: none, // TODO, not working correctly?
     pagenumberAlign: center,
     justifyContent:true,
+    topLevelHeadingOnOwnPage: false,
     doc
     ) = {
 
@@ -18,6 +19,9 @@
     set heading(numbering: "1.")
 
     show heading: it => [
+        #if (it.level == 1 and topLevelHeadingOnOwnPage) {
+            pagebreak()
+        }
         #set align(left)
         #pad(y:8pt,counter(heading).display() + " " + it.body)
     ]
