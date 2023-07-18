@@ -6,24 +6,31 @@
     pagenumberAlign: center,
     justifyContent:true,
     topLevelHeadingOnOwnPage: false,
+    equationSupplement:"Eq.",
+    headingSupplement:"Section ",
+    columnCount:1,
+    languageCode: "en",
     doc
     ) = {
 
+    // Set document metadata
+    set document(title:title,author:authors)    
     set par(justify: justifyContent)
     set page(paper: "a4",
     numbering: "1",
     number-align: pagenumberAlign,
     background: none)
 
-    set text(font:"colibri",size: 11pt)
-    set heading(numbering: "1.")
+    set text(font:"colibri",size: 11pt, lang: languageCode)
+    set heading(numbering: "1.",supplement: headingSupplement)
+    set math.equation(numbering: "(1)", supplement : [#equationSupplement])
 
     show heading: it => [
-        #if (it.level == 1 and topLevelHeadingOnOwnPage) {
+        #if (it.level == 1 and topLevelHeadingOnOwnPage and columnCount == 1) {
             pagebreak()
         }
         #set align(left)
-        #pad(y:8pt,counter(heading).display() + " " + it.body)
+        #pad(y:8pt,counter(heading).display() + " " + it.body)   
     ]
 
     align(center,text(24pt,weight:"bold",title))
@@ -44,5 +51,11 @@
     }
 
     set align(left)
-    doc
+
+    if columnCount > 1 {
+        columns(columnCount,doc)
+    }else {
+        doc
+    }
+
 }
